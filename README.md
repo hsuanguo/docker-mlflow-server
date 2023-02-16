@@ -22,14 +22,27 @@ A docker image of [MLflow](https://github.com/mlflow/mlflow), more specifically 
 * [1.13](https://github.com/at-gmbh/docker-mlflow-server/blob/v1.13/Dockerfile)
 * [1.12.1](https://github.com/at-gmbh/docker-mlflow-server/blob/v1.12.1/Dockerfile)
 * [1.12](https://github.com/at-gmbh/docker-mlflow-server/blob/v1.12.0/Dockerfile)
+* (New!)[2.1.1](https://github.com/hsuanguo/docker-mlflow-server/blob/v2.1.1/Dockerfile)
 
 These tags denote version numbers that correspond to the published versions of the [mlflow package on PyPI](https://pypi.org/project/mlflow/).
 
 ## How to use this image
 
-You may run the docker image with
+### Build Docker Image
 
-    docker run -it --rm -p 5000:5000 -v /local/path:/mlflow --name mlflow-server atcommons/mlflow-server
+First, build the docker image:
+
+```bash
+docker build . --tag mlflow-server:<version>
+```
+
+### Start the docker container
+
+You may run the docker image with:
+
+```bash
+docker run -it --rm -p 5000:5000 -v /local/path:/mlflow --name mlflow-server mlflow-server:<version>
+```
 
 This will expose port 5000 of the container to the host system and mount the `/mlflow` folder from the container to `/local/path` for persistence (you should adapt this path to your needs).
 
@@ -51,7 +64,7 @@ version: '3'
 
 services:
   mlflow:
-    image: 'atcommons/mlflow-server'
+    image: 'mlflow-server'
     build: .
     ports:
       - "5000:5000"

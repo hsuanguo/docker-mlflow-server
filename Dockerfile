@@ -1,5 +1,5 @@
-FROM python:3-slim
-LABEL maintainer="Alexander Thamm GmbH <contact@alexanderthamm.com>"
+FROM python:3.9.16-slim
+LABEL maintainer="Huan Guo <hsuan.guo@gmail.com>"
 
 WORKDIR /mlflow/
 
